@@ -145,7 +145,10 @@ def scrap(url,position,first_class,depth,date_class):
     x=position
     website=Website(url,position,first_class,depth,date_class)
 
-    mc=MongoClient()
+    local_connection_str= "mongodb://localhost:27017/test"
+    remote_connection_str = "mongodb+srv://rahul:<password>@cluster0.hem9w.mongodb.net/?retryWrites=true&w=majority"
+    conn=MongoClient(remote_connection_str)
+    mc=conn
     db=mc['scraps']
     collection_pdfs=db['scrap_items']
 
